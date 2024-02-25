@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const http = require('http');
-const httpProxy = require('http-proxy');
-const dotenv = require('dotenv');
+import http from 'http'
+import httpProxy from 'http-proxy'
+import dotenv from 'dotenv'
 
 dotenv.config({ path: '.env.local' });
 
-const proxyUrl = new URL(process.env.NEXT_PUBLIC_API_BASE_URL);
+const proxyUrl = new URL("https://localhost:1100");
 const proxyHost = proxyUrl.hostname;
 const proxyPort = proxyUrl.port;
-const apiBaseUrl = process.env.CORS_PROXY_API_BASE_URL;
-const origin = process.env.CORS_PROXY_ORIGIN || apiBaseUrl;
+const apiBaseUrl = "https://jsonplaceholder.typicode.com/";
+const origin = "https://jsonplaceholder.typicode.com/";
 const forwardHost = new URL(apiBaseUrl).hostname;
 
 console.log(`Proxy server config: localHost: ${proxyHost} | localPort: ${proxyPort} | forwardHost: ${forwardHost}`);
